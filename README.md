@@ -50,7 +50,7 @@ Una vez validado el sistema en simulación, se procede a establecer comunicació
 Este tutorial está diseñado para estudiantes, investigadores y entusiastas de la robótica que deseen aprender a integrar simulación y hardware real usando ROS, enfocándose en aplicaciones prácticas como la automatización de procesos mediante pick and place.
 
 
-## Instalación del Software Necesario
+## 💾 Instalación del Software Necesario
 ### 1. Gazebo (Simulador 3D para ROS)
 
 Si instalaste ros-noetic-desktop-full, ya tienes Gazebo 11 instalado, por lo tanto no necesitas instalarlo aparte.
@@ -118,7 +118,7 @@ Configurar Gazebo para encontrar el plugin:
     echo 'export GAZEBO_PLUGIN_PATH=$GAZABO_PLUGIN_PATH:/usr/local/lib' >> ~/.bashrc
     source ~/.bashrc
 
-## Configuración del entorno 
+## 🛠️ Configuración del entorno 
 ### 1. Creación y configuración del catkin_ws
 Si aún no tienes un workspace de ROS configurado, sigue estos pasos:
 
@@ -205,6 +205,54 @@ En RViz:
 - Cambia Fixed Frame a base_link. Gloal Options -> Fixed Frame -> base_link
 - Añade RobotModel desde el botón Add. Add -> RobotModel
 	
-Para verificar la simulación del gripper en RVIZ. 
+Para verificar la simulación del gripper en RVIZ en una nueva terminal ejecutamos esto: 
 
     roslaunch robotiq_gripper spawn_robotiq_85_gripper.launch
+
+Nota: Para terminal la ejecución presiona en cada terminal las teclas: ctrl + C
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## ✅ Conclusión
+
+Resumen de lo que se logró construir, aprendizajes obtenidos y posibles mejoras o versiones futuras del proyecto.
+
+## 🔜 Mejoras futuras
+
+    Enlistar las mejoras a realizar
+
+## ⚠️ Advertencia
+
+Como se indica en la licencia MIT, este software/hardware se proporciona sin ningún tipo de garantía. Por lo tanto, ningún colaborador es responsable de cualquier daño a tus componentes, materiales, PC, etc...
+## 📚 Recursos Adicionales
+
+## 👥 Autores del proyecto
+
+Autores originales del proyecto
+
+## 📬 Contacto
+
+¿Tienes dudas o sugerencias?
+
+    📧 Correo electrónico: ejemplo@udlap.mx

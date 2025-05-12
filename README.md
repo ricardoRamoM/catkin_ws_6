@@ -119,3 +119,92 @@ Configurar Gazebo para encontrar el plugin:
     source ~/.bashrc
 
 ## Configuración del entorno 
+### 1. Creación y configuración del catkin_ws
+Si aún no tienes un workspace de ROS configurado, sigue estos pasos:
+
+    mkdir -p ~/catkin_ws/src
+    cd ~/catkin_ws/
+    catkin_make
+
+Agrega el workspace a tu entorno de shell para que ROS lo reconozca:
+
+    echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+    source ~/.bashrc
+
+### 2. Clonado de repositorios (UR5, Robotiq, MoveIt config, etc.)
+
+Dentro de la carpeta src, clona los siguientes paquetes necesarios para el UR5 y el gripper Robotiq. 
+
+#### A) Repositorio del UR5 directo de Universal Robots
+
+	sudo apt-get install ros-noetic-universal-robots
+	cd src
+	git clone -b noetic-devel https://github.com/ros-industrial/universal_robot.git
+	cd ..
+	rosdep update
+	rosdep install --rosdistro noetic --ignore-src --from-paths src
+	catkin_make
+
+#### B) Instalar el plugin mimic (para articulaciones sincronizadas del gripper)
+
+Este plugin es necesario para simular correctamente el movimiento sincronizado de los dedos del gripper. Solo es ncesario si no lo instalaste globalmente y decidiste instalarlo en tu workspace: 
+
+    cd ~/catkin_ws/src
+    git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
+    cd ..
+    catkin_make
+
+#### C) Agregar el gripper Robotiq 2F-85
+En este tutorial usaremos una versión simplificada del modelo del gripper:
+
+    cd ~/catkin_ws/src
+    git clone https://github.com/LearnRoboticsWROS/robotiq_description.git
+    mv robotiq_description robotiq_gripper
+    cd ..
+    catkin_make
+
+Nota: La version completa está en este github: https://github.com/philwall3/UR5-with-Robotiq-Gripper-and-Kinect/tree/master. De este se necesita principalmente, al menos para simulacion, lo que está en esta ruta: robotiq_85_gripper-master/robotiq_85_description. Pero para simplificar las cosas, en este tutorial no usaremos este github.
+
+### 3. Compilación con catkin_make
+Una vez descargados los paquetes:
+
+    cd ~/catkin_ws
+    rosdep install --from-paths src --ignore-src -r -y
+    catkin_make
+
+Si todo se compila sin errores, ¡ya tienes tu entorno base configurado!
+
+### 4. Sourcing del workspace
+Para que en cada nueva terminal que abras y trabajes en este proyecto, no debas de hacer esto:
+
+    source ~/catkin_ws/devel/setup.bash
+
+Se puede automatizar con:
+
+    echo "source ~catkin_ws/devel/setup.bash" >> ~/.bashrc
+
+Si ya hiciste esto último ya en automatico hará el sourcing en cada nueva terminal.
+
+
+### 5. Probar simulación básica (UR5 y gripper)
+Para verificar la simuación del UR5 en Gazebo y RVIZ. Abre tres terminales para ejecutar lo siguiente:
+
+**Terminal 1** – Lanzar UR5 en Gazebo:
+
+    roslaunch ur_gazebo ur5_bringup.launch
+
+**Terminal 2** – Lanzar MoveIt:
+
+    roslaunch ur5_moveit_config moveit_planning_execution.launch sim:=true
+
+**Terminal 3** – Visualizar en RViz:
+
+    roslaunch ur5_moveit_config moveit_rviz.launch config:=true
+
+En RViz:
+- Cambia Fixed Frame a base_link. Gloal Options -> Fixed Frame -> base_link
+- Añade RobotModel desde el botón Add. Add -> RobotModel
+	
+Para verificar la simulación del gripper en RVIZ. 
+
+    roslaunch robotiq_gripper spawn_robotiq_85_gripper.launch

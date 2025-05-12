@@ -1,0 +1,8 @@
+prefix=/home/gazebo-ros/catkin_ws_6/install
+
+Name: ur5_v4
+Description: Description of ur5_v4
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

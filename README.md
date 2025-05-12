@@ -1,23 +1,24 @@
-# {Tutorial: Guía paso a paso para simular y controlar el brazo UR5 con MoveIt, Gazebo y Python (ROS Noetic)}
+# {Tutorial: Simulación y Ejecución de un Pick and Place con el Brazo UR5 y Gripper Robotiq usando ROS Noetic, Gazebo y MoveIt}
 
-El siguiente tutorial tiene como objetivo desarrollar "Pick and place" para el brazo róbotico colaborativo "UR5" 
+Este tutorial te guía paso a paso para simular y ejecutar una tarea de pick and place utilizando el brazo robótico UR5 y el gripper Robotiq 2F-85, integrando herramientas como Gazebo, MoveIt, RViz y Python en ROS Noetic sobre Ubuntu 20.04. Comenzarás configurando un entorno de simulación funcional y terminarás controlando el robot físico desde una computadora remota, aplicando los mismos scripts desarrollados en el entorno virtual. Ideal para quienes buscan unir teoría, simulación y práctica real en robótica colaborativa.
+
 ---
 
 ## 📋 Requisitos Previos
 
-🖥️ Hardware mínimo recomendado
+🖥️ **Hardware mínimo recomendado**
 
 - Procesador de 2 núcleos o más
 - 4 GB de RAM mínimo (se recomienda 8 GB o más para una experiencia fluida con Gazebo)
 - Tarjeta gráfica dedicada o integrada compatible con OpenGL (recomendado para simulación en Gazebo)
 - Al menos 20 GB de espacio libre en disco
 
-💻 Entorno y sistema operativo
+💻 **Entorno y sistema operativo**
 
 - Ubuntu 20.04 LTS (recomendado como sistema principal o en una partición dedicada)
 - Evitar máquinas virtuales si se trabajará con simulación en Gazebo, ya que pueden generar problemas de rendimiento y compatibilidad gráfica
 
-📚 Conocimientos técnicos sugeridos
+📚 **Conocimientos técnicos sugeridos**
 
 - Uso básico de la terminal de Linux
 - Conocimientos fundamentales de ROS: Nodos, tópicos, servicios y catkin
@@ -29,16 +30,23 @@ El siguiente tutorial tiene como objetivo desarrollar "Pick and place" para el b
 
 ## 📖  Introducción
 
-En este tutorial aprenderás a simular, planificar trayectorias y controlar un brazo robótico UR5 con un gripper Robotiq 2F-85 utilizando el entorno de simulación Gazebo, el planificador MoveIt, y la visualización en RViz, todo funcionando en ROS Noetic sobre Ubuntu 20.04. Además, se cubre la conexión y control del robot físico desde una computadora remota mediante scripts en Python y MoveIt Commander.
+En este tutorial aprenderás a simular, planificar trayectorias y controlar una tarea de pick and place utilizando el brazo robótico UR5 con el gripper Robotiq 2F-85, integrando herramientas del ecosistema de ROS Noetic sobre Ubuntu 20.04.
+
+El flujo del proyecto abarca desde la simulación completa del sistema en el entorno virtual de Gazebo, la planificación y ejecución de movimientos mediante MoveIt, la visualización y prueba de trayectorias en RViz, hasta la conexión con el robot físico UR5 desde una computadora remota usando scripts en Python y MoveIt Commander.
 
 Este proyecto combina varios componentes clave del ecosistema ROS:
 
-- **Gazebo**: Simulador 3D que permite probar comportamientos físicos del robot.
-- **MoveIt**: Herramienta de planificación de movimiento que integra cinemática, colisiones y control.
-- **RViz**: Visualizador en 3D donde puedes observar el modelo del robot, planificar y ejecutar movimientos.
-- **Python + ROS**: Scripts personalizados para automatizar tareas como pick and place.
+    🧩 Gazebo: Simulador 3D que permite modelar entornos físicos realistas para probar comportamientos del robot antes de llevarlos al mundo real.
 
-Este tutorial es ideal para estudiantes de robótica, investigadores o desarrolladores que deseen aprender cómo integrar simulación y hardware real usando ROS.
+    🦾 MoveIt: Framework de planificación de movimiento que considera cinemática, obstáculos, límites articulares y más.
+
+    👁️ RViz: Herramienta de visualización 3D utilizada para monitorear, planificar y validar los movimientos del robot en tiempo real.
+
+    🐍 Python + ROS: Scripts personalizados para automatizar secuencias de pick and place y controlar el gripper mediante MoveIt Commander.
+
+Una vez validado el sistema en simulación, se procede a establecer comunicación con el UR5 físico mediante conexión por red, permitiendo ejecutar exactamente la misma lógica desarrollada en el entorno virtual.
+
+Este tutorial está diseñado para estudiantes, investigadores y entusiastas de la robótica que deseen aprender a integrar simulación y hardware real usando ROS, enfocándose en aplicaciones prácticas como la automatización de procesos mediante pick and place.
 
 
 ## Configuración del entorno

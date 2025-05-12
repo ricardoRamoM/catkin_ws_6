@@ -36,11 +36,11 @@ El flujo del proyecto abarca desde la simulación completa del sistema en el ent
 
 Este proyecto combina varios componentes clave del ecosistema ROS:
 
-    🧩 Gazebo: Simulador 3D que permite modelar entornos físicos realistas para probar comportamientos del robot antes de llevarlos al mundo real.
+🧩 Gazebo: Simulador 3D que permite modelar entornos físicos realistas para probar comportamientos del robot antes de llevarlos al mundo real.
 
-    🦾 MoveIt: Framework de planificación de movimiento que considera cinemática, obstáculos, límites articulares y más.
+🦾 MoveIt: Framework de planificación de movimiento que considera cinemática, obstáculos, límites articulares y más.
 
-    👁️ RViz: Herramienta de visualización 3D utilizada para monitorear, planificar y validar los movimientos del robot en tiempo real.
+- 👁️ RViz: Herramienta de visualización 3D utilizada para monitorear, planificar y validar los movimientos del robot en tiempo real.
 
     🐍 Python + ROS: Scripts personalizados para automatizar secuencias de pick and place y controlar el gripper mediante MoveIt Commander.
 

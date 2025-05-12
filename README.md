@@ -209,6 +209,8 @@ Para verificar la simulación del gripper en RVIZ en una nueva terminal ejecutam
 
     roslaunch robotiq_gripper spawn_robotiq_85_gripper.launch
 
+![GRipper](https://github.com/ricardoRamoM/catkin_ws_6/blob/main/media/images/gripper_rviz.png)
+
 Nota: Para terminal la ejecución presiona en cada terminal las teclas: ctrl + C
 
 
